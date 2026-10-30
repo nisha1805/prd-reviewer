@@ -35,12 +35,17 @@ Each criterion describes what a good PRD contains and what a weak one looks like
 ## 7. Rollout plan
 - Why it matters: a good feature can still fail if the release is uncontrolled and cannot be reversed.
 - Good: says who gets it first, in what phases, what result triggers a wider release, and how to switch it off, such as "10% of users in week 1, full release if the error rate stays under 1%, with a feature flag for rollback."
-- Weak: "Launch in Q2."
+- Weak: "Release to everyone at once, with no way to roll back."
 
 ## 8. Open questions
 - Why it matters: unlisted unknowns turn into silent assumptions that are discovered during the build.
 - Good: lists each unresolved question with an owner and a decision date, such as "Do we store uploaded files? Owner: Legal, decide by 15 Nov."
 - Weak: no list, or "TBD" with no owner.
+
+## 9. Timeline and milestones
+- Why it matters: without dated milestones and owners, nobody can tell whether the work is on track until it is already late.
+- Good: lists key milestones with target dates and owners, and links to the backlog or epic where sprint-level tasks are tracked, such as "Design complete 14 Nov (Design lead); beta 12 Dec (Engineering); tasks tracked in Epic ABC-123."
+- Weak: "Launch in Q2."
 
 ## Scoring
 
@@ -52,7 +57,7 @@ Severity when a criterion is Missing or Weak:
 | --- | --- | --- |
 | Critical | 1 Problem statement, 3 Success metrics, 4 Scope and requirements | The team cannot build or judge the feature without them |
 | Major | 2 Target user, 5 Non-goals, 6 Risks and dependencies | Gaps here usually cause rework or late surprises |
-| Minor | 7 Rollout plan, 8 Open questions | Important, but easier to add late |
+| Minor | 7 Rollout plan, 8 Open questions, 9 Timeline and milestones | Important, but easier to add late |
 
 ## Planned for v2
 
