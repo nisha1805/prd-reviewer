@@ -41,3 +41,19 @@ Each criterion describes what a good PRD contains and what a weak one looks like
 - Why it matters: unlisted unknowns turn into silent assumptions that are discovered during the build.
 - Good: lists each unresolved question with an owner and a decision date, such as "Do we store uploaded files? Owner: Legal, decide by 15 Nov."
 - Weak: no list, or "TBD" with no owner.
+
+## Scoring
+
+Each criterion gets one rating: **Missing**, **Weak** or **Good**. A criterion may be marked **Not applicable** only for criteria 7 and 8, when the PRD describes a small, low-risk change.
+
+Severity when a criterion is Missing or Weak:
+
+| Severity | Criteria | Reason |
+| --- | --- | --- |
+| Critical | 1 Problem statement, 3 Success metrics, 4 Scope and requirements | The team cannot build or judge the feature without them |
+| Major | 2 Target user, 5 Non-goals, 6 Risks and dependencies | Gaps here usually cause rework or late surprises |
+| Minor | 7 Rollout plan, 8 Open questions | Important, but easier to add late |
+
+## Planned for v2
+
+- Consistency check: does the success metric measure the problem named in criterion 1?
