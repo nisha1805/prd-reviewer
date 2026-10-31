@@ -28,4 +28,4 @@ Ratings: Missing, Weak, Good or N/A. Evidence: a short quote or the section name
 | 6 | Risks and dependencies | Good | Three specific risks with mitigations, named dependencies (CRI stop/remove, DRA unprepare), alpha opt-in as fallback |
 | 7 | Rollout plan | | |
 | 8 | Open questions | | |
-| 9 | Timeline and milestones | | |
+| 9 | Timeline and milestones | Good (borderline) | Dated entries 2024-2026 plus link to tracking PR kubernetes/kubernetes#140133 and v1.38 Alpha target; no named owners in the history itself |
