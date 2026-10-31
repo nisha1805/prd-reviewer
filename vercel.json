@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "api/review.py": {
+      "maxDuration": 60,
+      "includeFiles": "{docs/rubric.md,src/**}"
+    }
+  }
+}

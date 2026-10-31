@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PRD Reviewer</title>
+<style>
+  :root { --bg:#fff; --fg:#1a1a1a; --muted:#666; --line:#ddd; --good:#1a7f37; --weak:#9a6700; --miss:#cf222e; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#121212; --fg:#eee; --muted:#aaa; --line:#333; --good:#3fb950; --weak:#d29922; --miss:#ff7b72; }
+  }
+  body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--fg);
+         max-width: 820px; margin: 0 auto; padding: 24px 16px; line-height: 1.5; }
+  h1 { margin-bottom: 4px; }
+  .muted { color: var(--muted); }
+  .warn { border: 1px solid var(--weak); border-radius: 8px; padding: 10px 12px; margin: 16px 0; }
+  textarea, input { width: 100%; box-sizing: border-box; padding: 10px; font: inherit;
+                    background: var(--bg); color: var(--fg); border: 1px solid var(--line); border-radius: 8px; }
+  textarea { min-height: 220px; }
+  button { margin-top: 12px; padding: 10px 18px; font: inherit; border-radius: 8px;
+           border: 1px solid var(--line); background: var(--fg); color: var(--bg); cursor: pointer; }
+  button:disabled { opacity: .5; cursor: wait; }
+  .row { border-top: 1px solid var(--line); padding: 12px 0; }
+  .badge { font-weight: 600; }
+  .Good { color: var(--good); } .Weak { color: var(--weak); } .Missing { color: var(--miss); }
+  .quote { font-size: .9em; color: var(--muted); margin-top: 4px; }
+  #error { color: var(--miss); margin-top: 12px; }
+</style>
+</head>
+<body>
+  <h1>PRD Reviewer</h1>
+  <p class="muted">Rates a product requirements document against a nine-criterion rubric. It checks structure and clarity only, not whether the idea is good. A human should always make the final call.</p>
+
+  <div class="warn">Do not paste confidential or personal information. Your text is sent to an AI service for the review and is not stored by this site.</div>
+
+  <label for="code">Access code</label>
+  <input id="code" type="password" autocomplete="off">
+
+  <label for="text" style="display:block;margin-top:12px">Paste your PRD</label>
+  <textarea id="text" placeholder="Paste a PRD here (up to 60,000 characters)"></textarea>
+
+  <button id="go">Review</button>
+  <div id="error"></div>
+  <div id="results"></div>
+
+<script>
+  const go = document.getElementById("go");
+  const err = document.getElementById("error");
+  const out = document.getElementById("results");
+
+  go.addEventListener("click", async () => {
+    err.textContent = ""; out.textContent = "";
+    go.disabled = true; go.textContent = "Reviewing (up to a minute)...";
+    try {
+      const res = await fetch("/api/review", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code: document.getElementById("code").value,
+                               text: document.getElementById("text").value })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Something went wrong.");
+      data.findings.forEach(f => {
+        const row = document.createElement("div"); row.className = "row";
+        const h = document.createElement("div");
+        const name = document.createElement("span"); name.textContent = f.criterion + ". " + f.name + ": ";
+        const badge = document.createElement("span"); badge.className = "badge " + f.rating; badge.textContent = f.rating;
+        h.append(name, badge);
+        const why = document.createElement("div"); why.textContent = f.reason;
+        row.append(h, why);
+        if (f.evidence) {
+          const q = document.createElement("div"); q.className = "quote";
+          q.textContent = "Quote: \u201C" + f.evidence + "\u201D" + (f.quote_ok ? "" : " (could not be verified in your document)");
+          row.append(q);
+        }
+        out.append(row);
+      });
+    } catch (e) {
+      err.textContent = e.message;
+    } finally {
+      go.disabled = false; go.textContent = "Review";
+    }
+  });
+</script>
+</body>
+</html>
