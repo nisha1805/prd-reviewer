@@ -1,0 +1,65 @@
+[
+  {
+    "criterion": 1,
+    "name": "Problem statement",
+    "rating": "Weak",
+    "evidence": "Sidecar containers should be restarted if they exit prematurely when a Pod is terminated to ensure that they\nare running while the containers that should terminate prior to its termination are still running.",
+    "reason": "The summary states the desired behaviour (a solution) with no user pain evidence such as a number, quote or observed behaviour, and the Motivation is mostly about why the feature gate was split."
+  },
+  {
+    "criterion": 2,
+    "name": "Target user",
+    "rating": "Missing",
+    "evidence": "",
+    "reason": "The User Stories section contains only empty 'Story 1' and 'Story 2' headings, and no primary user group or context is named."
+  },
+  {
+    "criterion": 3,
+    "name": "Success metrics",
+    "rating": "Weak",
+    "evidence": "The following behaviors should be maintained during pod termination:\n- sidecar containers restarting\n- liveness, readiness and startup probing",
+    "reason": "Goals are a list of behaviours with no number, baseline or deadline, and the SLO and SLI questions are left blank."
+  },
+  {
+    "criterion": 4,
+    "name": "Scope and requirements",
+    "rating": "Good",
+    "evidence": "A needed sidecar can restart only if it has previously started, is now exited (or has an unstarted replacement from a partial start), has a ready sandbox, and has more than one second left.",
+    "reason": "Requirements are specific and testable, with a mapped test plan, and Alpha limitations are separated from Beta work."
+  },
+  {
+    "criterion": 5,
+    "name": "Non-goals",
+    "rating": "Missing",
+    "evidence": "",
+    "reason": "The Non-Goals heading is empty, so no exclusions or reasons are given."
+  },
+  {
+    "criterion": 6,
+    "name": "Risks and dependencies",
+    "rating": "Good",
+    "evidence": "Lost CRI responses can leave a created or running replacement behind. A fresh runtime observation precedes each reconciliation, and created replacements are removed before retrying.",
+    "reason": "It names specific risks with mitigations and states reliance on CRI and hook context cancellation; the Dependencies questionnaire itself is blank."
+  },
+  {
+    "criterion": 7,
+    "name": "Rollout plan",
+    "rating": "Good",
+    "evidence": "Feature implemented behind `SidecarsRestartableDuringPodTermination`, disabled\n  by default, targeting v1.38.",
+    "reason": "It gives phased Alpha/Beta graduation criteria that trigger wider release and a feature gate to switch it off, though the rollout-failure questions are blank and GA is TBD."
+  },
+  {
+    "criterion": 8,
+    "name": "Open questions",
+    "rating": "Weak",
+    "evidence": "<<[UNRESOLVED deadline compatibility]>>\nThe proposed implementation does not preserve the legacy kill path's minimum\ntwo-second container grace",
+    "reason": "Unresolved questions are listed, but none has a named owner or decision date."
+  },
+  {
+    "criterion": 9,
+    "name": "Timeline and milestones",
+    "rating": "Weak",
+    "evidence": "2026-09-07: Proposed worker reconciliation design and lifecycle regression\n  tests in [kubernetes/kubernetes#140133], targeting v1.38 Alpha.",
+    "reason": "It gives a history and a target release and links a PR, but no forward milestones with dates and owners, and GA is 'TBD'."
+  }
+]

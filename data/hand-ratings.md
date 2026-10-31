@@ -11,7 +11,7 @@ Ratings: Missing, Weak, Good or N/A. Evidence: a short quote or the section name
 | 3 | Success metrics | Weak | Goals are vague ("improve reliability"); Graduation Criteria are outputs (flag, tests, docs) with no numbers; SLOs answered N/A |
 | 4 | Scope and requirements | Good | Implementation spells out the SleepAction and LifecycleHandler API changes and runtime behaviour; testable; phases separate what ships when |
 | 5 | Non-goals | Weak | Two exclusions listed, but neither has a reason |
-| 6 | Risks and dependencies | Missing | Risks and Mitigations section contains only "N/A" |
+| 6 | Risks and dependencies | Weak | Risks and Mitigations and Drawbacks are N/A, but Version Skew Strategy describes real failure modes (feature enabled on only one of kubelet or kube-apiserver) and names both as dependencies; no mitigation (rubric v2.1, re-rated from Missing after checking the text) |
 | 7 | Rollout plan | Good | Feature gate PodLifecycleSleepAction to switch off, Alpha/Beta/GA phases, rollback metric named; but trigger is vague ("increases unreasonably", no threshold) |
 | 8 | Open questions | Missing | No unresolved or TBD questions listed anywhere; KEP template has no such section |
 | 9 | Timeline and milestones | Weak | Implementation History has dated draft and beta/stable release targets, but no owners and no link to a tracker |
@@ -21,11 +21,11 @@ Ratings: Missing, Weak, Good or N/A. Evidence: a short quote or the section name
 | # | Criterion | Rating | Evidence |
 | --- | --- | --- | --- |
 | 1 | Problem statement | Weak | Motivation justifies splitting the KEP (avoid risk in beta) but never describes the user's pain, with no number, quote or incident |
-| 2 | Target user | | |
-| 3 | Success metrics | | |
+| 2 | Target user | Missing | Story 1 and Story 2 headings present but empty; no user named in that section |
+| 3 | Success metrics | Weak | Goals list behaviours to maintain but no numbers or baseline; Alpha criteria are outputs (gate, approval, tests); SLO question left blank |
 | 4 | Scope and requirements | Good | Design Details set explicit scope (only pods with restartable init containers, gate on; no API or CRI changes) and Alpha limitations state what ships first; Proposal paragraph itself is thin |
-| 5 | Non-goals | Missing | Heading present but only the template comment, nothing written |
+| 5 | Non-goals | Weak | Non-Goals section empty, but Alpha limitations list real exclusions with reasons (probes not reattached, no durable checkpoint for local eviction); scattered under the wrong heading (rubric v2.1, re-rated from Missing after checking the text) |
 | 6 | Risks and dependencies | Good | Three specific risks with mitigations, named dependencies (CRI stop/remove, DRA unprepare), alpha opt-in as fallback |
-| 7 | Rollout plan | | |
-| 8 | Open questions | | |
-| 9 | Timeline and milestones | Good (borderline) | Dated entries 2024-2026 plus link to tracking PR kubernetes/kubernetes#140133 and v1.38 Alpha target; no named owners in the history itself |
+| 7 | Rollout plan | Good | Feature gate SidecarsRestartableDuringPodTermination, disabled by default, kubelet named; real-node validation and approver sign-off are release requirements; no rollback threshold seen |
+| 8 | Open questions | Good | Two named UNRESOLVED decisions (deadline compatibility, local termination recovery) with options, assigned to reviewers/approvers, gated before Alpha; no calendar date |
+| 9 | Timeline and milestones | Weak | Dated entries 2024-2026 and link to tracking PR, but no named owners; owners must be named people or teams (rubric v2, re-rated from Good after seeing tool output) |

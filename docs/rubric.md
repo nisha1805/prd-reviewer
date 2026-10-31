@@ -2,6 +2,12 @@
 
 Each criterion describes what a good PRD contains and what a weak one looks like. The tool checks structure and clarity only, not whether the product idea is good. Every finding must quote the passage of the PRD it refers to.
 
+## Rating definitions
+- Good: meets the criterion's Good line.
+- Weak: something relevant is present but falls short of the Good line, for example a vague aim or a missing owner.
+- Missing: nothing relevant is present. An empty heading, an unfilled template placeholder or "N/A" counts as Missing.
+- Content outside the dedicated section: if a substantial part of the criterion is covered elsewhere in the document, rate Weak and note that it is scattered. A passing generic mention, such as the word "users", does not count.
+
 ## 1. Problem statement
 - Why it matters: without a stated problem, the team builds a solution that nobody can check against a real need.
 - Good: describes the user's pain with evidence (a number, a quote or an observed behaviour) before mentioning any solution, such as "Support agents spend 12 minutes per ticket searching three tools, and 40% of tickets are reopened."
@@ -16,6 +22,7 @@ Each criterion describes what a good PRD contains and what a weak one looks like
 - Why it matters: without a measurable target, nobody can tell whether the feature worked.
 - Good: a number, a baseline and a deadline, such as "cut report time from 30 minutes to 5 by Q2".
 - Weak: a vague aim such as "improve user satisfaction".
+- Rating note: a stated goal without a measurable target is Weak. Missing means no goal or success measure at all.
 
 ## 4. Scope and requirements
 - Why it matters: vague requirements get interpreted differently by design, engineering and testing.
@@ -41,11 +48,13 @@ Each criterion describes what a good PRD contains and what a weak one looks like
 - Why it matters: unlisted unknowns turn into silent assumptions that are discovered during the build.
 - Good: lists each unresolved question with an owner and a decision date, such as "Do we store uploaded files? Owner: Legal, decide by 15 Nov."
 - Weak: no list, or "TBD" with no owner.
+- Rating note: a question tied to a named release milestone (for example "decide before Alpha") counts as having a decision date. The owner must be a named person, team or approver group.
 
 ## 9. Timeline and milestones
 - Why it matters: without dated milestones and owners, nobody can tell whether the work is on track until it is already late.
 - Good: lists key milestones with target dates and owners, and links to the backlog or epic where sprint-level tasks are tracked, such as "Design complete 14 Nov (Design lead); beta 12 Dec (Engineering); tasks tracked in Epic ABC-123."
 - Weak: "Launch in Q2."
+- Rating note: owners must be named people or teams. A link to a tracking issue or pull request shows where work is tracked but does not count as an owner.
 
 ## Scoring
 

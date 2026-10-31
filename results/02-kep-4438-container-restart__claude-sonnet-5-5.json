@@ -1,0 +1,65 @@
+[
+  {
+    "criterion": 1,
+    "name": "Problem statement",
+    "rating": "Weak",
+    "evidence": "Sidecar containers should be restarted if they exit prematurely when a Pod is terminated to ensure that they",
+    "reason": "The summary states the desired behaviour (a solution) without describing user pain or giving any number, quote or observed behaviour, and the Motivation covers only why the feature is split out."
+  },
+  {
+    "criterion": 2,
+    "name": "Target user",
+    "rating": "Missing",
+    "evidence": "",
+    "reason": "The User Stories section contains only empty 'Story 1' and 'Story 2' headings, and no user group or context is named anywhere."
+  },
+  {
+    "criterion": 3,
+    "name": "Success metrics",
+    "rating": "Weak",
+    "evidence": "The following behaviors should be maintained during pod termination:",
+    "reason": "Goals list desired behaviours but give no number, baseline or deadline; the SLO and SLI sections are left unanswered, and only a restart counter is named."
+  },
+  {
+    "criterion": 4,
+    "name": "Scope and requirements",
+    "rating": "Good",
+    "evidence": "no restart is attempted with at most one second remaining.",
+    "reason": "The Design Details give specific, testable rules (ordering, deadlines, recovery) mapped to named tests, and Alpha limitations are separated from Beta work."
+  },
+  {
+    "criterion": 5,
+    "name": "Non-goals",
+    "rating": "Weak",
+    "evidence": "Probe support remains Beta work.",
+    "reason": "The Non-Goals heading is empty, but the deferred items (probe reattachment, token rotation, durable local recovery) are scattered through the Alpha limitations section."
+  },
+  {
+    "criterion": 6,
+    "name": "Risks and dependencies",
+    "rating": "Good",
+    "evidence": "Lost CRI responses can leave a created or running replacement behind.",
+    "reason": "Specific technical risks are named with mitigations, the dependency on CRI and hook cancellation is stated, and the feature gate (Alpha, opt-in) serves as the fallback."
+  },
+  {
+    "criterion": 7,
+    "name": "Rollout plan",
+    "rating": "Good",
+    "evidence": "Feature implemented behind `SidecarsRestartableDuringPodTermination`, disabled\n  by default, targeting v1.38.",
+    "reason": "A gated, off-by-default Alpha with Beta exit criteria (flake-free Testgrid for two releases) and a documented gate-based disable path covers phases, triggers and rollback, though GA is TBD."
+  },
+  {
+    "criterion": 8,
+    "name": "Open questions",
+    "rating": "Good",
+    "evidence": "The unresolved compatibility and recovery decisions require KEP approver review.",
+    "reason": "Two UNRESOLVED blocks are listed, with KEP approvers as the owning group and resolution tied to the Alpha graduation milestone."
+  },
+  {
+    "criterion": 9,
+    "name": "Timeline and milestones",
+    "rating": "Weak",
+    "evidence": "targeting v1.38 Alpha",
+    "reason": "Implementation History gives dates and a release target but no named milestone owners, and a PR link only shows where the work is tracked, not who owns it."
+  }
+]

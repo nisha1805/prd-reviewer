@@ -1,0 +1,65 @@
+[
+  {
+    "criterion": 1,
+    "name": "Problem statement",
+    "rating": "Weak",
+    "evidence": "they often require additional scripting or custom solutions to achieve a simple sleep functionality.",
+    "reason": "The pain (needing a sleep binary or scripting) is described, but without a number, quote or measured behaviour, and the framing leans towards the solution (a built-in sleep action), which fits the Weak line."
+  },
+  {
+    "criterion": 2,
+    "name": "Target user",
+    "rating": "Weak",
+    "evidence": "As a Kubernetes user, I want to configure my container to sleep for a specific duration during graceful termination",
+    "reason": "The only user named is the generic 'Kubernetes user', with no specific primary group or context, which matches the Weak 'all users' example."
+  },
+  {
+    "criterion": 3,
+    "name": "Success metrics",
+    "rating": "Weak",
+    "evidence": "Improve the overall reliability and availability of Kubernetes applications by providing a way for containers to gracefully terminate.",
+    "reason": "Goals and graduation criteria such as 'No negative feedback' are stated, but there is no number, baseline or deadline, so this is a vague aim."
+  },
+  {
+    "criterion": 4,
+    "name": "Scope and requirements",
+    "rating": "Good",
+    "evidence": "If the container terminates before the sleep finishes, this action will be interrupted.",
+    "reason": "The API fields, validation rules, behaviour and e2e scenarios are specific enough to test, and the alpha/beta/GA stages separate current work from later work."
+  },
+  {
+    "criterion": 5,
+    "name": "Non-goals",
+    "rating": "Weak",
+    "evidence": "This KEP does not aim to provide a way to pause or delay pod termination indefinitely.",
+    "reason": "Two non-goals are listed, but neither has a one-line reason explaining the exclusion, so the Good line is not met."
+  },
+  {
+    "criterion": 6,
+    "name": "Risks and dependencies",
+    "rating": "Weak",
+    "evidence": "If only the kube-apiserver enable this feature, validation will pass, but kubelet won't understand the new field and will ignore it when pod is terminating.",
+    "reason": "The Risks and Mitigations and Dependencies sections are 'N/A', and the real risks are scattered across version skew and troubleshooting, with no fallback for the biggest risk."
+  },
+  {
+    "criterion": 7,
+    "name": "Rollout plan",
+    "rating": "Good",
+    "evidence": "The feature can be disabled in Alpha and Beta versions by restarting kube-apiserver with the feature-gate off.",
+    "reason": "The plan gives an opt-in feature gate, alpha/beta/GA phases with feedback-based criteria, a rollback metric and a way to switch it off, though the triggers are loose."
+  },
+  {
+    "criterion": 8,
+    "name": "Open questions",
+    "rating": "Missing",
+    "evidence": "",
+    "reason": "The document has no open questions section and no listed unresolved questions with owners or decision dates."
+  },
+  {
+    "criterion": 9,
+    "name": "Timeline and milestones",
+    "rating": "Weak",
+    "evidence": "2023-12-20: Target to beta in v1.30 \n- 2025-06-11: Target to stable in v1.34",
+    "reason": "Dated release targets exist in the Implementation History, but there are no named owners and no link to a backlog or epic, so it falls short of the Good line."
+  }
+]
