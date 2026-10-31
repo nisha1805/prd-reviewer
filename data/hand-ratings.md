@@ -29,3 +29,17 @@ Ratings: Missing, Weak, Good or N/A. Evidence: a short quote or the section name
 | 7 | Rollout plan | Good | Feature gate SidecarsRestartableDuringPodTermination, disabled by default, kubelet named; real-node validation and approver sign-off are release requirements; no rollback threshold seen |
 | 8 | Open questions | Good | Two named UNRESOLVED decisions (deadline compatibility, local termination recovery) with options, assigned to reviewers/approvers, gated before Alpha; no calendar date |
 | 9 | Timeline and milestones | Weak | Dated entries 2024-2026 and link to tracking PR, but no named owners; owners must be named people or teams (rubric v2, re-rated from Good after seeing tool output) |
+
+## 03-kep-2079-network-policy-port-range.md (co-rated with Claude, not blind; do not use for accuracy figures)
+
+| # | Criterion | Rating | Evidence |
+| --- | --- | --- | --- |
+| 1 | Problem statement | Good | Motivation cites two user issues (#67526, #93111) and a concrete example of listing ports 32000-32768 one by one, before the proposed endPort field |
+| 2 | Target user | Weak | Three detailed scenarios, but generic groups ("a developer", "a Kubernetes User"); borderline because context is strong |
+| 3 | Success metrics | | |
+| 4 | Scope and requirements | | |
+| 5 | Non-goals | Weak | Two exclusions listed, neither with a reason |
+| 6 | Risks and dependencies | Weak | One risk (CNIs must support the new field), vague mitigation, CNIs named as dependency, no fallback |
+| 7 | Rollout plan | | |
+| 8 | Open questions | | |
+| 9 | Timeline and milestones | | |
