@@ -18,3 +18,9 @@
 - Owner: Swet
 
 - Update, same day: after reading the text, I re-rated two hand ratings from Missing to Weak because substantial relevant content sits outside the dedicated section: doc 1 criterion 6 (Version Skew Strategy) and doc 2 criterion 5 (Alpha limitations). Doc 2 criterion 2 stays Missing, since only a generic mention of "users" exists. These changes follow the text, not the tool's output, but I had seen the tool's answer first, so these two documents are practice data, not a blind test.
+
+## 2026-10-31: Consistency test, document 1, three runs
+- Result: stable on 7 of 9 criteria. Flips were criterion 4 (Weak/Good/Good) and criterion 7 (Weak/Weak/Good), both between neighbouring ratings, both on criteria where I rated Good by hand.
+- Interpretation: the tool is stricter than me on borderline Good calls. Criterion 7 is borderline in the document itself (loose rollback trigger).
+- Decision: no further rubric changes on documents 1 and 2, which were already used for tuning. Next evidence: a third document rated by hand before running the tool.
+- Possible later fixes: set temperature to 0, take the majority of 3 runs, or show a "borderline" label when runs disagree.
