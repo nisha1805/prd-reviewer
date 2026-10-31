@@ -23,7 +23,7 @@ Ratings: Missing, Weak, Good or N/A. Evidence: a short quote or the section name
 | 1 | Problem statement | Weak | Motivation justifies splitting the KEP (avoid risk in beta) but never describes the user's pain, with no number, quote or incident |
 | 2 | Target user | | |
 | 3 | Success metrics | | |
-| 4 | Scope and requirements | | |
+| 4 | Scope and requirements | Good | Design Details set explicit scope (only pods with restartable init containers, gate on; no API or CRI changes) and Alpha limitations state what ships first; Proposal paragraph itself is thin |
 | 5 | Non-goals | Missing | Heading present but only the template comment, nothing written |
 | 6 | Risks and dependencies | Good | Three specific risks with mitigations, named dependencies (CRI stop/remove, DRA unprepare), alpha opt-in as fallback |
 | 7 | Rollout plan | | |
